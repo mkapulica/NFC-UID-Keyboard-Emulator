@@ -26,11 +26,10 @@ Partial Class frmMain
         Me.btnRefreshReader = New System.Windows.Forms.Button()
         Me.btnStartMonitor = New System.Windows.Forms.Button()
         Me.txtInputSpace = New System.Windows.Forms.TextBox()
-        Me.btnStopMonitor = New System.Windows.Forms.Button()
-        Me.lblInst1 = New System.Windows.Forms.Label()
-        Me.lblInst2 = New System.Windows.Forms.Label()
-        Me.txtReadingMode = New System.Windows.Forms.TextBox()
         Me.lblReadingMode = New System.Windows.Forms.Label()
+        Me.rbOriginal = New System.Windows.Forms.RadioButton()
+        Me.rbReversed = New System.Windows.Forms.RadioButton()
+        Me.chkSendEnter = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'cbxReaderList
@@ -55,7 +54,7 @@ Partial Class frmMain
         'btnStartMonitor
         '
         Me.btnStartMonitor.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btnStartMonitor.Location = New System.Drawing.Point(22, 91)
+        Me.btnStartMonitor.Location = New System.Drawing.Point(25, 112)
         Me.btnStartMonitor.Name = "btnStartMonitor"
         Me.btnStartMonitor.Size = New System.Drawing.Size(496, 32)
         Me.btnStartMonitor.TabIndex = 3
@@ -65,50 +64,11 @@ Partial Class frmMain
         'txtInputSpace
         '
         Me.txtInputSpace.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txtInputSpace.Location = New System.Drawing.Point(22, 141)
+        Me.txtInputSpace.Location = New System.Drawing.Point(25, 159)
         Me.txtInputSpace.Multiline = True
         Me.txtInputSpace.Name = "txtInputSpace"
-        Me.txtInputSpace.Size = New System.Drawing.Size(496, 384)
+        Me.txtInputSpace.Size = New System.Drawing.Size(496, 206)
         Me.txtInputSpace.TabIndex = 4
-        '
-        'btnStopMonitor
-        '
-        Me.btnStopMonitor.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btnStopMonitor.Location = New System.Drawing.Point(431, 55)
-        Me.btnStopMonitor.Name = "btnStopMonitor"
-        Me.btnStopMonitor.Size = New System.Drawing.Size(87, 27)
-        Me.btnStopMonitor.TabIndex = 5
-        Me.btnStopMonitor.Text = "Stop"
-        Me.btnStopMonitor.UseVisualStyleBackColor = True
-        '
-        'lblInst1
-        '
-        Me.lblInst1.AutoSize = True
-        Me.lblInst1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblInst1.Location = New System.Drawing.Point(551, 30)
-        Me.lblInst1.Name = "lblInst1"
-        Me.lblInst1.Size = New System.Drawing.Size(104, 18)
-        Me.lblInst1.TabIndex = 6
-        Me.lblInst1.Text = "Reading Mode"
-        '
-        'lblInst2
-        '
-        Me.lblInst2.AutoSize = True
-        Me.lblInst2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblInst2.Location = New System.Drawing.Point(567, 59)
-        Me.lblInst2.Name = "lblInst2"
-        Me.lblInst2.Size = New System.Drawing.Size(218, 108)
-        Me.lblInst2.TabIndex = 7
-        Me.lblInst2.Text = "1- Card UID (4 Byte)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2- Card UID (4 Byte + Reverse)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "3- Card UID (7 Byte)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "4- Ca" &
-    "rd UID (7 Byte + Reverse) " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "5- Card UID (8H10D)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "6- Card UID (8H10D + Reverse)"
-        '
-        'txtReadingMode
-        '
-        Me.txtReadingMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txtReadingMode.Location = New System.Drawing.Point(136, 56)
-        Me.txtReadingMode.Name = "txtReadingMode"
-        Me.txtReadingMode.Size = New System.Drawing.Size(289, 24)
-        Me.txtReadingMode.TabIndex = 8
         '
         'lblReadingMode
         '
@@ -116,20 +76,54 @@ Partial Class frmMain
         Me.lblReadingMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.lblReadingMode.Location = New System.Drawing.Point(22, 59)
         Me.lblReadingMode.Name = "lblReadingMode"
-        Me.lblReadingMode.Size = New System.Drawing.Size(108, 18)
+        Me.lblReadingMode.Size = New System.Drawing.Size(83, 18)
         Me.lblReadingMode.TabIndex = 9
-        Me.lblReadingMode.Text = "Reading Mode:"
+        Me.lblReadingMode.Text = "Byte Order:"
+        '
+        'rbOriginal
+        '
+        Me.rbOriginal.AutoSize = True
+        Me.rbOriginal.Checked = True
+        Me.rbOriginal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
+        Me.rbOriginal.Location = New System.Drawing.Point(111, 59)
+        Me.rbOriginal.Name = "rbOriginal"
+        Me.rbOriginal.Size = New System.Drawing.Size(68, 19)
+        Me.rbOriginal.TabIndex = 10
+        Me.rbOriginal.TabStop = True
+        Me.rbOriginal.Text = "Original"
+        Me.rbOriginal.UseVisualStyleBackColor = True
+        '
+        'rbReversed
+        '
+        Me.rbReversed.AutoSize = True
+        Me.rbReversed.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
+        Me.rbReversed.Location = New System.Drawing.Point(185, 59)
+        Me.rbReversed.Name = "rbReversed"
+        Me.rbReversed.Size = New System.Drawing.Size(77, 19)
+        Me.rbReversed.TabIndex = 11
+        Me.rbReversed.Text = "Reversed"
+        Me.rbReversed.UseVisualStyleBackColor = True
+        '
+        'chkSendEnter
+        '
+        Me.chkSendEnter.AutoSize = True
+        Me.chkSendEnter.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
+        Me.chkSendEnter.Location = New System.Drawing.Point(25, 84)
+        Me.chkSendEnter.Name = "chkSendEnter"
+        Me.chkSendEnter.Size = New System.Drawing.Size(100, 22)
+        Me.chkSendEnter.TabIndex = 12
+        Me.chkSendEnter.Text = "Send Enter"
+        Me.chkSendEnter.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(810, 551)
+        Me.ClientSize = New System.Drawing.Size(540, 395)
+        Me.Controls.Add(Me.chkSendEnter)
+        Me.Controls.Add(Me.rbReversed)
+        Me.Controls.Add(Me.rbOriginal)
         Me.Controls.Add(Me.lblReadingMode)
-        Me.Controls.Add(Me.txtReadingMode)
-        Me.Controls.Add(Me.lblInst2)
-        Me.Controls.Add(Me.lblInst1)
-        Me.Controls.Add(Me.btnStopMonitor)
         Me.Controls.Add(Me.txtInputSpace)
         Me.Controls.Add(Me.btnStartMonitor)
         Me.Controls.Add(Me.btnRefreshReader)
@@ -145,9 +139,8 @@ Partial Class frmMain
     Friend WithEvents btnRefreshReader As Button
     Friend WithEvents btnStartMonitor As Button
     Friend WithEvents txtInputSpace As TextBox
-    Friend WithEvents btnStopMonitor As Button
-    Friend WithEvents lblInst1 As Label
-    Friend WithEvents lblInst2 As Label
-    Friend WithEvents txtReadingMode As TextBox
     Friend WithEvents lblReadingMode As Label
+    Friend WithEvents rbOriginal As RadioButton
+    Friend WithEvents rbReversed As RadioButton
+    Friend WithEvents chkSendEnter As CheckBox
 End Class
