@@ -1,4 +1,4 @@
-# UIDtoKeyboard
+# RFID/NFC UID Keyboard Emulator
 Read RFID/NFC Tag UID and key-in as a keyboard input (keyboard emulation)
 
 ## Quick Overview

@@ -157,7 +157,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.btnStartMonitor)
         Me.MinimumSize = New System.Drawing.Size(333, 304)
         Me.Name = "frmMain"
-        Me.Text = "UIDtoKeyboard"
+        Me.Text = "RFID/NFC UID Keyboard Emulator"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
