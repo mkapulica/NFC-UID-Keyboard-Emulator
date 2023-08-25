@@ -25,7 +25,7 @@ Namespace My
         Public Sub New()
             MyBase.New(Global.Microsoft.VisualBasic.ApplicationServices.AuthenticationMode.Windows)
             AddHandler AppDomain.CurrentDomain.AssemblyResolve, AddressOf CurrentDomain_AssemblyResolve
-            Me.IsSingleInstance = False
+            Me.IsSingleInstance = True
             Me.EnableVisualStyles = True
             Me.SaveMySettingsOnExit = True
             Me.ShutdownStyle = Global.Microsoft.VisualBasic.ApplicationServices.ShutdownMode.AfterMainFormCloses
