@@ -34,8 +34,8 @@ Public Class frmMain
     End Function
 
     Private Function StartMonitor()
-        readerName = cbxReaderList.Text
-        If readerName = "" Then
+        readerName = cbxReaderList.SelectedItem
+        If readerName = "" Or readerName Is Nothing Then
             MessageBox.Show("No card reader detected!" + vbCrLf + "Please try refreshing the reader list.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Return False
         Else
@@ -159,6 +159,11 @@ Public Class frmMain
     End Function
 
     Private Sub CbxReaderList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxReaderList.SelectedIndexChanged
+        ' Prevent monitor restart when DataSource is being refreshed.
+        If cbxReaderList.DataSource Is Nothing Then
+            Return
+        End If
+
         RestartMonitor()
     End Sub
 End Class
