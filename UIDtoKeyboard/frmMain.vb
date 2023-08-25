@@ -9,6 +9,7 @@ Public Class frmMain
     Dim readerName As String
     Dim readingMode As String
     Dim isStart As Boolean = False
+    Dim monitor
 
     Function LoadReaderList()
         Dim readerList As String()
@@ -32,8 +33,6 @@ Public Class frmMain
         End Try
     End Function
 
-    Dim monitor
-
     Private Function StartMonitor()
         readerName = cbxReaderList.Text
         If readerName = "" Then
@@ -45,6 +44,15 @@ Public Class frmMain
             AttachToAllEvents(monitor)
             monitor.Start(readerName)
             Return True
+        End If
+    End Function
+
+    Private Function StopMonitor()
+        If monitor IsNot Nothing Then
+            monitor.Cancel()
+            Return True
+        Else
+            Return False
         End If
     End Function
 
@@ -66,9 +74,10 @@ Public Class frmMain
 
     Private Sub BtnStartMonitor_Click(sender As Object, e As EventArgs) Handles btnStartMonitor.Click
         If isStart = True Then
-            monitor.Cancel()
-            btnStartMonitor.Text = "Start Monitor"
-            isStart = False
+            If StopMonitor() Then
+                btnStartMonitor.Text = "Start Monitor"
+                isStart = False
+            End If
         Else
             isStart = StartMonitor()
             If isStart Then
@@ -139,4 +148,17 @@ Public Class frmMain
         End If
     End Function
 
+    Private Function RestartMonitor()
+        If isStart = True Then
+            StopMonitor()
+            StartMonitor()
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Private Sub CbxReaderList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxReaderList.SelectedIndexChanged
+        RestartMonitor()
+    End Sub
 End Class
