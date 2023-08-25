@@ -52,6 +52,9 @@
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>wireless-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PCSC, Version=4.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PCSC.4.0.3\lib\net40\PCSC.dll</HintPath>
@@ -136,6 +139,9 @@
   <ItemGroup>
     <EmbeddedResource Include="PCSC.dll" />
     <EmbeddedResource Include="PCSC.Iso7816.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wireless-icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
