@@ -53,7 +53,7 @@ Partial Class frmMain
         Me.btnRefreshReader.Location = New System.Drawing.Point(336, 3)
         Me.btnRefreshReader.Name = "btnRefreshReader"
         Me.btnRefreshReader.Size = New System.Drawing.Size(106, 27)
-        Me.btnRefreshReader.TabIndex = 2
+        Me.btnRefreshReader.TabIndex = 1
         Me.btnRefreshReader.Text = "Refresh"
         Me.btnRefreshReader.UseVisualStyleBackColor = True
         '
@@ -65,7 +65,7 @@ Partial Class frmMain
         Me.btnStartMonitor.Location = New System.Drawing.Point(12, 112)
         Me.btnStartMonitor.Name = "btnStartMonitor"
         Me.btnStartMonitor.Size = New System.Drawing.Size(445, 32)
-        Me.btnStartMonitor.TabIndex = 3
+        Me.btnStartMonitor.TabIndex = 6
         Me.btnStartMonitor.Text = "Start Monitor"
         Me.btnStartMonitor.UseVisualStyleBackColor = True
         '
@@ -79,7 +79,7 @@ Partial Class frmMain
         Me.txtInputSpace.Multiline = True
         Me.txtInputSpace.Name = "txtInputSpace"
         Me.txtInputSpace.Size = New System.Drawing.Size(445, 161)
-        Me.txtInputSpace.TabIndex = 4
+        Me.txtInputSpace.TabIndex = 7
         '
         'lblReadingMode
         '
@@ -88,7 +88,7 @@ Partial Class frmMain
         Me.lblReadingMode.Location = New System.Drawing.Point(9, 59)
         Me.lblReadingMode.Name = "lblReadingMode"
         Me.lblReadingMode.Size = New System.Drawing.Size(83, 18)
-        Me.lblReadingMode.TabIndex = 9
+        Me.lblReadingMode.TabIndex = 2
         Me.lblReadingMode.Text = "Byte Order:"
         '
         'rbOriginal
@@ -99,7 +99,7 @@ Partial Class frmMain
         Me.rbOriginal.Location = New System.Drawing.Point(98, 59)
         Me.rbOriginal.Name = "rbOriginal"
         Me.rbOriginal.Size = New System.Drawing.Size(68, 19)
-        Me.rbOriginal.TabIndex = 10
+        Me.rbOriginal.TabIndex = 3
         Me.rbOriginal.TabStop = True
         Me.rbOriginal.Text = "Original"
         Me.rbOriginal.UseVisualStyleBackColor = True
@@ -111,7 +111,7 @@ Partial Class frmMain
         Me.rbReversed.Location = New System.Drawing.Point(172, 59)
         Me.rbReversed.Name = "rbReversed"
         Me.rbReversed.Size = New System.Drawing.Size(77, 19)
-        Me.rbReversed.TabIndex = 11
+        Me.rbReversed.TabIndex = 4
         Me.rbReversed.Text = "Reversed"
         Me.rbReversed.UseVisualStyleBackColor = True
         '
@@ -122,7 +122,7 @@ Partial Class frmMain
         Me.chkSendEnter.Location = New System.Drawing.Point(12, 84)
         Me.chkSendEnter.Name = "chkSendEnter"
         Me.chkSendEnter.Size = New System.Drawing.Size(100, 22)
-        Me.chkSendEnter.TabIndex = 12
+        Me.chkSendEnter.TabIndex = 5
         Me.chkSendEnter.Text = "Send Enter"
         Me.chkSendEnter.UseVisualStyleBackColor = True
         '
