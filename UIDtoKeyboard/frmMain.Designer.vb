@@ -95,24 +95,24 @@ Partial Class frmMain
         'rbOriginal
         '
         Me.rbOriginal.AutoSize = True
-        Me.rbOriginal.Checked = True
         Me.rbOriginal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
         Me.rbOriginal.Location = New System.Drawing.Point(98, 59)
         Me.rbOriginal.Name = "rbOriginal"
         Me.rbOriginal.Size = New System.Drawing.Size(68, 19)
         Me.rbOriginal.TabIndex = 3
-        Me.rbOriginal.TabStop = True
         Me.rbOriginal.Text = "Original"
         Me.rbOriginal.UseVisualStyleBackColor = True
         '
         'rbReversed
         '
         Me.rbReversed.AutoSize = True
+        Me.rbReversed.Checked = True
         Me.rbReversed.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
         Me.rbReversed.Location = New System.Drawing.Point(172, 59)
         Me.rbReversed.Name = "rbReversed"
         Me.rbReversed.Size = New System.Drawing.Size(77, 19)
         Me.rbReversed.TabIndex = 4
+        Me.rbReversed.TabStop = True
         Me.rbReversed.Text = "Reversed"
         Me.rbReversed.UseVisualStyleBackColor = True
         '
