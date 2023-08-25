@@ -8,7 +8,7 @@ Public Class frmMain
     Private _hContext As ISCardContext
     Dim readerName As String
     Dim readingMode As String
-    Dim isstart As Boolean = False
+    Dim isStart As Boolean = False
 
     Function LoadReaderList()
         Dim readerList As String()
@@ -34,14 +34,19 @@ Public Class frmMain
 
     Dim monitor
 
-    Private Sub StartMonitor()
-        Dim monitorFactory As MonitorFactory = MonitorFactory.Instance
-        monitor = monitorFactory.Create(SCardScope.System)
-        AttachToAllEvents(monitor)
-        monitor.Start(cbxReaderList.Text)
-
+    Private Function StartMonitor()
         readerName = cbxReaderList.Text
-    End Sub
+        If readerName = "" Then
+            MessageBox.Show("No card reader detected!" + vbCrLf + "Please try refreshing the reader list.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Return False
+        Else
+            Dim monitorFactory As MonitorFactory = MonitorFactory.Instance
+            monitor = monitorFactory.Create(SCardScope.System)
+            AttachToAllEvents(monitor)
+            monitor.Start(readerName)
+            Return True
+        End If
+    End Function
 
     Private Sub AttachToAllEvents(monitor As ISCardMonitor)
         AddHandler monitor.CardInserted, AddressOf CardInit
@@ -60,14 +65,15 @@ Public Class frmMain
     End Sub
 
     Private Sub BtnStartMonitor_Click(sender As Object, e As EventArgs) Handles btnStartMonitor.Click
-        If isstart = True Then
+        If isStart = True Then
             monitor.Cancel()
             btnStartMonitor.Text = "Start Monitor"
-            isstart = False
+            isStart = False
         Else
-            StartMonitor()
-            btnStartMonitor.Text = "Stop Monitor"
-            isstart = True
+            isStart = StartMonitor()
+            If isStart Then
+                btnStartMonitor.Text = "Stop Monitor"
+            End If
         End If
     End Sub
 
