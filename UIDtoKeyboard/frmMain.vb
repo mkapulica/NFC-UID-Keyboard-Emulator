@@ -65,6 +65,7 @@ Public Class frmMain
     End Sub
 
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ManageStartupShortcut()
         LoadReaderList()
     End Sub
 
@@ -148,6 +149,24 @@ Public Class frmMain
         End If
     End Function
 
+    Private Function IsRunAtStartupEnabled()
+        If StartupToolStripMenuItem.Checked Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Sub ManageStartupShortcut()
+        Dim shortcutManager As New ShortcutManager()
+        If IsRunAtStartupEnabled() Then
+            shortcutManager.EnsureStartupShortcut()
+            shortcutManager.RemoveObsoleteShortcuts()
+        Else
+            shortcutManager.RemoveStartupShortcut()
+        End If
+    End Sub
+
     Private Function RestartMonitor()
         If isStart = True Then
             StopMonitor()
@@ -165,5 +184,9 @@ Public Class frmMain
         End If
 
         RestartMonitor()
+    End Sub
+
+    Private Sub StartupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StartupToolStripMenuItem.Click
+        ManageStartupShortcut()
     End Sub
 End Class
