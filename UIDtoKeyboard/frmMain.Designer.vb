@@ -40,8 +40,8 @@ Partial Class frmMain
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.TrayContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ShowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StartupTrayToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TrayContextMenu.SuspendLayout()
@@ -178,7 +178,7 @@ Partial Class frmMain
         Me.StartupToolStripMenuItem.CheckOnClick = True
         Me.StartupToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.StartupToolStripMenuItem.Name = "StartupToolStripMenuItem"
-        Me.StartupToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.StartupToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.StartupToolStripMenuItem.Text = "Run at Startup "
         '
         'MinimizeToTrayToolStripMenuItem
@@ -187,7 +187,7 @@ Partial Class frmMain
         Me.MinimizeToTrayToolStripMenuItem.CheckOnClick = True
         Me.MinimizeToTrayToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.MinimizeToTrayToolStripMenuItem.Name = "MinimizeToTrayToolStripMenuItem"
-        Me.MinimizeToTrayToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.MinimizeToTrayToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.MinimizeToTrayToolStripMenuItem.Text = "Minimize to Tray"
         '
         'NotifyIcon1
@@ -201,19 +201,13 @@ Partial Class frmMain
         '
         Me.TrayContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShowToolStripMenuItem, Me.StartupTrayToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.TrayContextMenu.Name = "TrayContextMenu"
-        Me.TrayContextMenu.Size = New System.Drawing.Size(181, 92)
+        Me.TrayContextMenu.Size = New System.Drawing.Size(150, 70)
         '
         'ShowToolStripMenuItem
         '
         Me.ShowToolStripMenuItem.Name = "ShowToolStripMenuItem"
-        Me.ShowToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ShowToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.ShowToolStripMenuItem.Text = "Show"
-        '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'StartupTrayToolStripMenuItem
         '
@@ -221,8 +215,14 @@ Partial Class frmMain
         Me.StartupTrayToolStripMenuItem.CheckOnClick = True
         Me.StartupTrayToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.StartupTrayToolStripMenuItem.Name = "StartupTrayToolStripMenuItem"
-        Me.StartupTrayToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.StartupTrayToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.StartupTrayToolStripMenuItem.Text = "Run at Startup"
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'frmMain
         '
