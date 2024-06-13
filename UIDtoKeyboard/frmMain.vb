@@ -10,6 +10,7 @@ Public Class frmMain
     Dim readingMode As String
     Dim isStart As Boolean = False
     Dim monitor
+    Dim isRunAtStartupEnabled As Boolean = True
 
     Function LoadReaderList()
         Dim readerList As String()
@@ -65,7 +66,7 @@ Public Class frmMain
     End Sub
 
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ManageStartupShortcut()
+        ManageStartupShortcut(isRunAtStartupEnabled)
         LoadReaderList()
     End Sub
 
@@ -149,21 +150,43 @@ Public Class frmMain
         End If
     End Function
 
-    Private Function IsRunAtStartupEnabled()
-        If StartupToolStripMenuItem.Checked Then
+    Private Function IsMinimizeToTrayEnabled()
+        If MinimizeToTrayToolStripMenuItem.Checked Then
             Return True
         Else
             Return False
         End If
     End Function
 
-    Sub ManageStartupShortcut()
+    Sub ManageStartupShortcut(runAtStartupEnabled As Boolean)
         Dim shortcutManager As New ShortcutManager()
-        If IsRunAtStartupEnabled() Then
+        If runAtStartupEnabled Then
             shortcutManager.EnsureStartupShortcut()
             shortcutManager.RemoveObsoleteShortcuts()
         Else
             shortcutManager.RemoveStartupShortcut()
+        End If
+    End Sub
+
+    Private Sub ToggleRunAtStartup()
+        isRunAtStartupEnabled = Not isRunAtStartupEnabled
+        ManageStartupShortcut(isRunAtStartupEnabled)
+
+        If isRunAtStartupEnabled Then
+            StartupToolStripMenuItem.Checked = True
+            StartupTrayToolStripMenuItem.Checked = True
+        Else
+            StartupToolStripMenuItem.Checked = False
+            StartupTrayToolStripMenuItem.Checked = False
+        End If
+    End Sub
+
+    Sub ManageMinimizeToTrayOption()
+        If IsMinimizeToTrayEnabled() Then
+            NotifyIcon1.Visible = True
+            Me.WindowState = FormWindowState.Normal
+        Else
+            NotifyIcon1.Visible = False
         End If
     End Sub
 
@@ -187,6 +210,38 @@ Public Class frmMain
     End Sub
 
     Private Sub StartupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StartupToolStripMenuItem.Click
-        ManageStartupShortcut()
+        ToggleRunAtStartup()
+    End Sub
+
+    ' Handle form resize event to detect minimization
+    Private Sub MainForm_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        If IsMinimizeToTrayEnabled() AndAlso Me.WindowState = FormWindowState.Minimized Then
+            Me.Hide()
+        End If
+    End Sub
+
+    ' Restore the form when NotifyIcon is double-clicked
+    Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
+        Me.Show()
+        Me.WindowState = FormWindowState.Normal
+    End Sub
+
+    ' Context menu item to show the form
+    Private Sub ShowToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowToolStripMenuItem.Click
+        Me.Show()
+        Me.WindowState = FormWindowState.Normal
+    End Sub
+
+    ' Context menu item to exit the application
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Application.Exit()
+    End Sub
+
+    Private Sub MinimizeToTrayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MinimizeToTrayToolStripMenuItem.Click
+        ManageMinimizeToTrayOption()
+    End Sub
+
+    Private Sub StartupTrayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StartupTrayToolStripMenuItem.Click
+        ToggleRunAtStartup()
     End Sub
 End Class

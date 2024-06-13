@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,8 +20,9 @@ Partial Class frmMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.cbxReaderList = New System.Windows.Forms.ComboBox()
         Me.btnRefreshReader = New System.Windows.Forms.Button()
@@ -36,8 +37,14 @@ Partial Class frmMain
         Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StartupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MinimizeToTrayToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.TrayContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ShowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StartupTrayToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        Me.TrayContextMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'cbxReaderList
@@ -183,6 +190,40 @@ Partial Class frmMain
         Me.MinimizeToTrayToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.MinimizeToTrayToolStripMenuItem.Text = "Minimize to Tray"
         '
+        'NotifyIcon1
+        '
+        Me.NotifyIcon1.ContextMenuStrip = Me.TrayContextMenu
+        Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
+        Me.NotifyIcon1.Text = "RFID/NFC UID Keyboard Emulator"
+        Me.NotifyIcon1.Visible = True
+        '
+        'TrayContextMenu
+        '
+        Me.TrayContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShowToolStripMenuItem, Me.StartupTrayToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.TrayContextMenu.Name = "TrayContextMenu"
+        Me.TrayContextMenu.Size = New System.Drawing.Size(181, 92)
+        '
+        'ShowToolStripMenuItem
+        '
+        Me.ShowToolStripMenuItem.Name = "ShowToolStripMenuItem"
+        Me.ShowToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ShowToolStripMenuItem.Text = "Show"
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'StartupTrayToolStripMenuItem
+        '
+        Me.StartupTrayToolStripMenuItem.Checked = True
+        Me.StartupTrayToolStripMenuItem.CheckOnClick = True
+        Me.StartupTrayToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.StartupTrayToolStripMenuItem.Name = "StartupTrayToolStripMenuItem"
+        Me.StartupTrayToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.StartupTrayToolStripMenuItem.Text = "Run at Startup"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -204,6 +245,7 @@ Partial Class frmMain
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.TrayContextMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -222,4 +264,9 @@ Partial Class frmMain
     Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StartupToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MinimizeToTrayToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NotifyIcon1 As NotifyIcon
+    Friend WithEvents TrayContextMenu As ContextMenuStrip
+    Friend WithEvents ShowToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StartupTrayToolStripMenuItem As ToolStripMenuItem
 End Class
