@@ -32,7 +32,12 @@ Partial Class frmMain
         Me.rbReversed = New System.Windows.Forms.RadioButton()
         Me.chkSendEnter = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StartupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MinimizeToTrayToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'cbxReaderList
@@ -63,7 +68,7 @@ Partial Class frmMain
         Me.btnStartMonitor.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnStartMonitor.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btnStartMonitor.Location = New System.Drawing.Point(12, 112)
+        Me.btnStartMonitor.Location = New System.Drawing.Point(12, 127)
         Me.btnStartMonitor.Name = "btnStartMonitor"
         Me.btnStartMonitor.Size = New System.Drawing.Size(445, 32)
         Me.btnStartMonitor.TabIndex = 6
@@ -76,17 +81,17 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtInputSpace.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txtInputSpace.Location = New System.Drawing.Point(12, 161)
+        Me.txtInputSpace.Location = New System.Drawing.Point(12, 176)
         Me.txtInputSpace.Multiline = True
         Me.txtInputSpace.Name = "txtInputSpace"
-        Me.txtInputSpace.Size = New System.Drawing.Size(445, 161)
+        Me.txtInputSpace.Size = New System.Drawing.Size(445, 166)
         Me.txtInputSpace.TabIndex = 7
         '
         'lblReadingMode
         '
         Me.lblReadingMode.AutoSize = True
         Me.lblReadingMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblReadingMode.Location = New System.Drawing.Point(9, 59)
+        Me.lblReadingMode.Location = New System.Drawing.Point(9, 74)
         Me.lblReadingMode.Name = "lblReadingMode"
         Me.lblReadingMode.Size = New System.Drawing.Size(83, 18)
         Me.lblReadingMode.TabIndex = 2
@@ -96,7 +101,7 @@ Partial Class frmMain
         '
         Me.rbOriginal.AutoSize = True
         Me.rbOriginal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
-        Me.rbOriginal.Location = New System.Drawing.Point(98, 59)
+        Me.rbOriginal.Location = New System.Drawing.Point(98, 74)
         Me.rbOriginal.Name = "rbOriginal"
         Me.rbOriginal.Size = New System.Drawing.Size(68, 19)
         Me.rbOriginal.TabIndex = 3
@@ -108,7 +113,7 @@ Partial Class frmMain
         Me.rbReversed.AutoSize = True
         Me.rbReversed.Checked = True
         Me.rbReversed.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
-        Me.rbReversed.Location = New System.Drawing.Point(172, 59)
+        Me.rbReversed.Location = New System.Drawing.Point(172, 74)
         Me.rbReversed.Name = "rbReversed"
         Me.rbReversed.Size = New System.Drawing.Size(77, 19)
         Me.rbReversed.TabIndex = 4
@@ -120,7 +125,7 @@ Partial Class frmMain
         '
         Me.chkSendEnter.AutoSize = True
         Me.chkSendEnter.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(238, Byte))
-        Me.chkSendEnter.Location = New System.Drawing.Point(12, 84)
+        Me.chkSendEnter.Location = New System.Drawing.Point(12, 99)
         Me.chkSendEnter.Name = "chkSendEnter"
         Me.chkSendEnter.Size = New System.Drawing.Size(100, 22)
         Me.chkSendEnter.TabIndex = 5
@@ -135,20 +140,54 @@ Partial Class frmMain
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.cbxReaderList, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.btnRefreshReader, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 12)
+        Me.TableLayoutPanel1.Controls.Add(Me.cbxReaderList, 0, 0)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 27)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(445, 33)
         Me.TableLayoutPanel1.TabIndex = 13
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(469, 24)
+        Me.MenuStrip1.TabIndex = 14
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'OptionsToolStripMenuItem
+        '
+        Me.OptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StartupToolStripMenuItem, Me.MinimizeToTrayToolStripMenuItem})
+        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.OptionsToolStripMenuItem.Text = "Options"
+        '
+        'StartupToolStripMenuItem
+        '
+        Me.StartupToolStripMenuItem.Checked = True
+        Me.StartupToolStripMenuItem.CheckOnClick = True
+        Me.StartupToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.StartupToolStripMenuItem.Name = "StartupToolStripMenuItem"
+        Me.StartupToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.StartupToolStripMenuItem.Text = "Run at Startup "
+        '
+        'MinimizeToTrayToolStripMenuItem
+        '
+        Me.MinimizeToTrayToolStripMenuItem.Checked = True
+        Me.MinimizeToTrayToolStripMenuItem.CheckOnClick = True
+        Me.MinimizeToTrayToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.MinimizeToTrayToolStripMenuItem.Name = "MinimizeToTrayToolStripMenuItem"
+        Me.MinimizeToTrayToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.MinimizeToTrayToolStripMenuItem.Text = "Minimize to Tray"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(469, 338)
+        Me.ClientSize = New System.Drawing.Size(469, 354)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.chkSendEnter)
         Me.Controls.Add(Me.rbReversed)
@@ -156,11 +195,15 @@ Partial Class frmMain
         Me.Controls.Add(Me.lblReadingMode)
         Me.Controls.Add(Me.txtInputSpace)
         Me.Controls.Add(Me.btnStartMonitor)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.MinimumSize = New System.Drawing.Size(333, 304)
         Me.Name = "frmMain"
         Me.Text = "RFID/NFC UID Keyboard Emulator"
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -175,4 +218,8 @@ Partial Class frmMain
     Friend WithEvents rbReversed As RadioButton
     Friend WithEvents chkSendEnter As CheckBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StartupToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MinimizeToTrayToolStripMenuItem As ToolStripMenuItem
 End Class
