@@ -7,6 +7,7 @@ Public Class AppSettings
     Private _isAutoStartMonitorEnabled As Boolean = True
     Private _isRunAtStartupEnabled As Boolean = True
     Private _isMinimizeToTrayEnabled As Boolean = True
+    Private _isSendEnterEnabled As Boolean = True
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 
@@ -54,6 +55,18 @@ Public Class AppSettings
             If _isMinimizeToTrayEnabled <> value Then
                 _isMinimizeToTrayEnabled = value
                 RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(IsMinimizeToTrayEnabled)))
+            End If
+        End Set
+    End Property
+
+    Public Property IsSendEnterEnabled As Boolean
+        Get
+            Return _isSendEnterEnabled
+        End Get
+        Set(value As Boolean)
+            If _isSendEnterEnabled <> value Then
+                _isSendEnterEnabled = value
+                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(IsSendEnterEnabled)))
             End If
         End Set
     End Property

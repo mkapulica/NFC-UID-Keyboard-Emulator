@@ -1,4 +1,5 @@
-﻿Imports PCSC
+﻿Imports System.IO
+Imports PCSC
 Imports PCSC.Iso7816
 Imports PCSC.Monitoring
 
@@ -6,6 +7,7 @@ Public Class frmMain
 
     Private Shared ReadOnly _contextFactory As IContextFactory = ContextFactory.Instance
     Private _hContext As ISCardContext
+    Private _settingsManager As SettingsManager
     Dim readerName As String
     Dim readingMode As String
     Dim isStart As Boolean = False
@@ -66,8 +68,17 @@ Public Class frmMain
     End Sub
 
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ManageStartupShortcut(isRunAtStartupEnabled)
+        Dim settingsFilePath As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json")
+        _settingsManager = New SettingsManager(settingsFilePath)
+        ManageStartupShortcut(_settingsManager.Settings.IsRunAtStartupEnabled)
         LoadReaderList()
+        ' Set the controls to reflect the saved settings
+        SetStartupCheckboxes(_settingsManager.Settings.IsRunAtStartupEnabled)
+        rbReversed.Checked = _settingsManager.Settings.IsReversedByteOrder
+        rbOriginal.Checked = Not _settingsManager.Settings.IsReversedByteOrder
+        chkSendEnter.Checked = _settingsManager.Settings.IsSendEnterEnabled
+        MinimizeToTrayToolStripMenuItem.Checked = _settingsManager.Settings.IsMinimizeToTrayEnabled
+        ManageMinimizeToTrayOption()
     End Sub
 
     Private Sub BtnRefreshReader_Click(sender As Object, e As EventArgs) Handles btnRefreshReader.Click
@@ -169,16 +180,14 @@ Public Class frmMain
     End Sub
 
     Private Sub ToggleRunAtStartup()
-        isRunAtStartupEnabled = Not isRunAtStartupEnabled
-        ManageStartupShortcut(isRunAtStartupEnabled)
+        _settingsManager.Settings.IsRunAtStartupEnabled = Not _settingsManager.Settings.IsRunAtStartupEnabled
+        ManageStartupShortcut(_settingsManager.Settings.IsRunAtStartupEnabled)
+        SetStartupCheckboxes(_settingsManager.Settings.IsRunAtStartupEnabled)
+    End Sub
 
-        If isRunAtStartupEnabled Then
-            StartupToolStripMenuItem.Checked = True
-            StartupTrayToolStripMenuItem.Checked = True
-        Else
-            StartupToolStripMenuItem.Checked = False
-            StartupTrayToolStripMenuItem.Checked = False
-        End If
+    Private Sub SetStartupCheckboxes(checked As Boolean)
+        StartupToolStripMenuItem.Checked = checked
+        StartupTrayToolStripMenuItem.Checked = checked
     End Sub
 
     Sub ManageMinimizeToTrayOption()
@@ -238,10 +247,19 @@ Public Class frmMain
     End Sub
 
     Private Sub MinimizeToTrayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MinimizeToTrayToolStripMenuItem.Click
+        _settingsManager.Settings.IsMinimizeToTrayEnabled = MinimizeToTrayToolStripMenuItem.Checked
         ManageMinimizeToTrayOption()
     End Sub
 
     Private Sub StartupTrayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StartupTrayToolStripMenuItem.Click
         ToggleRunAtStartup()
+    End Sub
+
+    Private Sub rbOriginal_CheckedChanged(sender As Object, e As EventArgs) Handles rbOriginal.CheckedChanged
+        _settingsManager.Settings.IsReversedByteOrder = Not rbOriginal.Checked
+    End Sub
+
+    Private Sub chkSendEnter_CheckedChanged(sender As Object, e As EventArgs) Handles chkSendEnter.CheckedChanged
+        _settingsManager.Settings.IsSendEnterEnabled = chkSendEnter.Checked
     End Sub
 End Class
