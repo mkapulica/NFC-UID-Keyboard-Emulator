@@ -13,12 +13,27 @@ Public Class frmMain
     Dim isStart As Boolean = False
     Dim monitor
     Dim isRunAtStartupEnabled As Boolean = True
+    Private _firstShow As Boolean = True
 
-    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub New()
+        ' This call is required by the designer.
+        InitializeComponent()
+
         InitializeSettings()
         SetControlsFromSettings()
         LoadReaderList()
         AutoStartMonitor()
+    End Sub
+
+    Protected Overrides Sub SetVisibleCore(ByVal value As Boolean)
+        ' If this is the first time the form is being shown and the Minimize-to-Tray setting is enabled,
+        ' force the form to start hidden.
+        If _firstShow AndAlso _settingsManager IsNot Nothing AndAlso _settingsManager.Settings.IsMinimizeToTrayEnabled Then
+            value = False
+        End If
+
+        _firstShow = False
+        MyBase.SetVisibleCore(value)
     End Sub
 
     Private Sub InitializeSettings()
