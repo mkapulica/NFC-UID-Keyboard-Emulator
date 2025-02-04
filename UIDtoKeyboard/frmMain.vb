@@ -14,6 +14,60 @@ Public Class frmMain
     Dim monitor
     Dim isRunAtStartupEnabled As Boolean = True
 
+    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        InitializeSettings()
+        SetControlsFromSettings()
+        LoadReaderList()
+        AutoStartMonitor()
+    End Sub
+
+    Private Sub InitializeSettings()
+        Dim settingsFilePath As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json")
+        _settingsManager = New SettingsManager(settingsFilePath)
+        ManageStartupShortcut(_settingsManager.Settings.IsRunAtStartupEnabled)
+    End Sub
+
+    Private Sub AutoStartMonitor()
+        If _settingsManager.Settings.IsAutoStartMonitorEnabled Then
+            isStart = StartMonitor()
+            If isStart Then
+                btnStartMonitor.Text = "Stop Monitor"
+            End If
+        End If
+    End Sub
+
+    Private Sub SetControlsFromSettings()
+        SetStartupCheckboxes(_settingsManager.Settings.IsRunAtStartupEnabled)
+        rbReversed.Checked = _settingsManager.Settings.IsReversedByteOrder
+        rbOriginal.Checked = Not _settingsManager.Settings.IsReversedByteOrder
+        chkSendEnter.Checked = _settingsManager.Settings.IsSendEnterEnabled
+        AutostartMonitorToolStripMenuItem.Checked = _settingsManager.Settings.IsAutoStartMonitorEnabled
+        MinimizeToTrayToolStripMenuItem.Checked = _settingsManager.Settings.IsMinimizeToTrayEnabled
+        ManageMinimizeToTrayOption()
+    End Sub
+
+    Private Sub BtnRefreshReader_Click(sender As Object, e As EventArgs) Handles btnRefreshReader.Click
+        LoadReaderList()
+    End Sub
+
+    Private Sub BtnStartMonitor_Click(sender As Object, e As EventArgs) Handles btnStartMonitor.Click
+        ToggleMonitor()
+    End Sub
+
+    Private Sub ToggleMonitor()
+        If isStart Then
+            If StopMonitor() Then
+                btnStartMonitor.Text = "Start Monitor"
+                isStart = False
+            End If
+        Else
+            isStart = StartMonitor()
+            If isStart Then
+                btnStartMonitor.Text = "Stop Monitor"
+            End If
+        End If
+    End Sub
+
     Function LoadReaderList()
         Dim readerList As String()
         Try
@@ -38,7 +92,7 @@ Public Class frmMain
 
     Private Function StartMonitor()
         readerName = cbxReaderList.SelectedItem
-        If readerName = "" Or readerName Is Nothing Then
+        If String.IsNullOrEmpty(readerName) Then
             MessageBox.Show("No card reader detected!" + vbCrLf + "Please try refreshing the reader list.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Return False
         Else
@@ -65,38 +119,6 @@ Public Class frmMain
 
     Sub CardInit(eventName As SCardMonitor, unknown As CardStatusEventArgs)
         TypeOutUID()
-    End Sub
-
-    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim settingsFilePath As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json")
-        _settingsManager = New SettingsManager(settingsFilePath)
-        ManageStartupShortcut(_settingsManager.Settings.IsRunAtStartupEnabled)
-        LoadReaderList()
-        ' Set the controls to reflect the saved settings
-        SetStartupCheckboxes(_settingsManager.Settings.IsRunAtStartupEnabled)
-        rbReversed.Checked = _settingsManager.Settings.IsReversedByteOrder
-        rbOriginal.Checked = Not _settingsManager.Settings.IsReversedByteOrder
-        chkSendEnter.Checked = _settingsManager.Settings.IsSendEnterEnabled
-        MinimizeToTrayToolStripMenuItem.Checked = _settingsManager.Settings.IsMinimizeToTrayEnabled
-        ManageMinimizeToTrayOption()
-    End Sub
-
-    Private Sub BtnRefreshReader_Click(sender As Object, e As EventArgs) Handles btnRefreshReader.Click
-        LoadReaderList()
-    End Sub
-
-    Private Sub BtnStartMonitor_Click(sender As Object, e As EventArgs) Handles btnStartMonitor.Click
-        If isStart = True Then
-            If StopMonitor() Then
-                btnStartMonitor.Text = "Start Monitor"
-                isStart = False
-            End If
-        Else
-            isStart = StartMonitor()
-            If isStart Then
-                btnStartMonitor.Text = "Stop Monitor"
-            End If
-        End If
     End Sub
 
     Function TypeOutUID()
@@ -261,5 +283,10 @@ Public Class frmMain
 
     Private Sub chkSendEnter_CheckedChanged(sender As Object, e As EventArgs) Handles chkSendEnter.CheckedChanged
         _settingsManager.Settings.IsSendEnterEnabled = chkSendEnter.Checked
+    End Sub
+
+    Private Sub AutostartMonitorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutostartMonitorToolStripMenuItem.Click
+        AutostartMonitorToolStripMenuItem.Checked = Not AutostartMonitorToolStripMenuItem.Checked
+        _settingsManager.Settings.IsAutoStartMonitorEnabled = AutostartMonitorToolStripMenuItem.Checked
     End Sub
 End Class

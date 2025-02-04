@@ -37,6 +37,7 @@ Partial Class frmMain
         Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StartupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MinimizeToTrayToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AutostartMonitorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.TrayContextMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ShowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -167,7 +168,7 @@ Partial Class frmMain
         '
         'OptionsToolStripMenuItem
         '
-        Me.OptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StartupToolStripMenuItem, Me.MinimizeToTrayToolStripMenuItem})
+        Me.OptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StartupToolStripMenuItem, Me.MinimizeToTrayToolStripMenuItem, Me.AutostartMonitorToolStripMenuItem})
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
         Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.OptionsToolStripMenuItem.Text = "Options"
@@ -178,7 +179,7 @@ Partial Class frmMain
         Me.StartupToolStripMenuItem.CheckOnClick = True
         Me.StartupToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.StartupToolStripMenuItem.Name = "StartupToolStripMenuItem"
-        Me.StartupToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.StartupToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.StartupToolStripMenuItem.Text = "Run at Startup "
         '
         'MinimizeToTrayToolStripMenuItem
@@ -187,8 +188,14 @@ Partial Class frmMain
         Me.MinimizeToTrayToolStripMenuItem.CheckOnClick = True
         Me.MinimizeToTrayToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.MinimizeToTrayToolStripMenuItem.Name = "MinimizeToTrayToolStripMenuItem"
-        Me.MinimizeToTrayToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.MinimizeToTrayToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.MinimizeToTrayToolStripMenuItem.Text = "Minimize to Tray"
+        '
+        'AutostartMonitorToolStripMenuItem
+        '
+        Me.AutostartMonitorToolStripMenuItem.Name = "AutostartMonitorToolStripMenuItem"
+        Me.AutostartMonitorToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AutostartMonitorToolStripMenuItem.Text = "Autostart Monitor"
         '
         'NotifyIcon1
         '
@@ -269,4 +276,5 @@ Partial Class frmMain
     Friend WithEvents ShowToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StartupTrayToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AutostartMonitorToolStripMenuItem As ToolStripMenuItem
 End Class
