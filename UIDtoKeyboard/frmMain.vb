@@ -168,27 +168,15 @@ Public Class frmMain
     End Function
 
     Private Function IsReversed()
-        If rbReversed.Checked Then
-            Return True
-        Else
-            Return False
-        End If
+        Return rbReversed.Checked
     End Function
 
     Private Function IsSendEnterOptionChecked()
-        If chkSendEnter.Checked Then
-            Return True
-        Else
-            Return False
-        End If
+        Return chkSendEnter.Checked
     End Function
 
     Private Function IsMinimizeToTrayEnabled()
-        If MinimizeToTrayToolStripMenuItem.Checked Then
-            Return True
-        Else
-            Return False
-        End If
+        Return MinimizeToTrayToolStripMenuItem.Checked
     End Function
 
     Sub ManageStartupShortcut(runAtStartupEnabled As Boolean)
