@@ -4,9 +4,9 @@ Public Class AppSettings
     Implements INotifyPropertyChanged
 
     Private _isReversedByteOrder As Boolean = True
-    Private _isAutoStartMonitorEnabled As Boolean = True
-    Private _isRunAtStartupEnabled As Boolean = True
-    Private _isMinimizeToTrayEnabled As Boolean = True
+    Private _isAutoStartMonitorEnabled As Boolean = False
+    Private _isRunAtStartupEnabled As Boolean = False
+    Private _isMinimizeToTrayEnabled As Boolean = False
     Private _isSendEnterEnabled As Boolean = True
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
